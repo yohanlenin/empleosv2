@@ -1,0 +1,13 @@
+package net.mesa.empleosv2;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class Empleosv2ApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
