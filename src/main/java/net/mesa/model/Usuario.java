@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name = "Usuarios")
 public class Usuario {

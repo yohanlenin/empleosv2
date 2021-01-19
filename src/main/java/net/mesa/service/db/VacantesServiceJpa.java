@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import net.mesa.model.Vacante;
@@ -37,5 +40,31 @@ public class VacantesServiceJpa implements VacantesService {
 		repoVacantes.save(vacante);
 
 	}
+
+	@Override
+	public List<Vacante> buscarDestacada() {
+		
+		return repoVacantes.findByDestacadoAndEstatusOrderByIdDesc(1, "Aprobada");
+	}
+
+	@Override
+	public void eliminar(Integer idVacante) {
+		repoVacantes.deleteById(idVacante);
+		
+	}
+
+	@Override
+	public List<Vacante> buscarByExample(Example<Vacante> example) {
+		return repoVacantes.findAll(example);
+		
+	}
+
+	@Override
+	public Page<Vacante> buscarTodas(Pageable page) {
+		return repoVacantes.findAll(page);
+		
+	}
+
+	
 
 }

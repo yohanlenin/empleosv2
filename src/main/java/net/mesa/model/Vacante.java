@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name= "vacantes")
@@ -101,6 +100,10 @@ public class Vacante {
 	}
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	
+	public void reset() {
+		this.imagen=null;
 	}
 	@Override
 	public String toString() {

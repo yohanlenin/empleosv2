@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -27,7 +30,7 @@ public class CategoriasController {
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String mostrarIndex(Model model) {
 		List<Categoria> lista= servicioCategoria.buscarTodas();
-		model.addAttribute("categoria", lista);
+		model.addAttribute("categorias", lista);
 		return "categorias/listCategorias";
 	}
 	// @GetMapping("/create")
@@ -47,6 +50,12 @@ public class CategoriasController {
 		}
 		servicioCategoria.guardar(categoria);
 		attributes.addFlashAttribute("msg", "Registro guardado");
+		return "redirect:/categorias/index";
+	}
+	@GetMapping("/delete/{id}")
+	public String eliminar(@PathVariable("id") int idCategoria, RedirectAttributes attributes) {
+		servicioCategoria.eliminar(idCategoria);
+		attributes.addFlashAttribute("msg", "Registro eliminado");	
 		return "redirect:/categorias/index";
 	}
 

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
- <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+   
+    <link rel="icon" href="data:,"> 
 
-    <title>EmpleosApp | Detalles de la Oferta de Trabajo</title>
+    <title>EmpleosApp | Listado de Ofertas de Trabajo</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
     <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
   </head>
-
   <body>
 
     <header th:insert="fragments/menu :: menu-principal">
@@ -27,21 +28,21 @@
 
         <div class="row">
           <div class="col-md-3">            
-            <img class="rounded mx-auto d-block" th:src="@{/images/{img} (img = ${vacante.imagen})}" alt="Generic placeholder image" width="220" height="220">            
+            <img class="rounded mx-auto d-block" th:src="@{/logos/{img} (img = ${vacantes.imagen})}" alt="Generic placeholder image" width="220" height="220">            
           </div>
           <div class="col-md-9">
             <div class="card">
-              <h4 class="card-header">Aplicar para <strong th:text = "${vacante.nombre}"></strong></h4>              
+              <h4 class="card-header">Aplicar para <strong th:text = "${vacantes.nombre}"></strong></h4>              
               <div class="card-body">
-                <h5 class="card-title"><strong>Categoría: </strong> <span></span></h5>
-                <h6 class="card-title"><strong>Publicado: </strong > <span th:text = "${vacante.fecha}"> </span></h6>                
-                <h6 class="card-title"><strong>Salario Ofrecido: </strong><span th:text = "${vacante.salario}"></span></h6>
-                <p class="card-text" th:text = "${vacante.descripcion}"></p>
+                <h5 class="card-title"><strong>Categoría: </strong> <span th:text="${vacantes.categoria.nombre}"></span></h5>
+                <h6 class="card-title"><strong>Publicado: </strong > <span th:text="${#dates.format(vacantes.fecha, 'dd-MM-yyyy')}"></span></h6>                
+                <h6 class="card-title"><strong>Salario Ofrecido: </strong><span th:text = "${vacantes.salario}"></span></h6>
+                <p class="card-text" th:text = "${vacantes.descripcion}"></p>
                 
                 <div class="card bg-light mb-3" >
                   <div class="card-body">
                     <h5 class="card-title">Detalles de la oferta de trabajo</h5>
-                    <p class="card-text"></p>
+                    <p class="card-text" th:utext="${vacantes.detalles}"></p>
                   </div>
                 </div>   
                 <a class="btn btn-primary" href="#" role="button" title="Quiero aplicar para esta oferta de trabajo."><i class="fas fa-file" aria-hidden="true"></i> Aplicar</a>                            

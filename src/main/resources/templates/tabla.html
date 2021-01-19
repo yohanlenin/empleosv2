@@ -21,28 +21,28 @@
 	    <th>Destacado </th>
 	    <th>Detalle</th>
 	  </tr>
-	  <tr th:each="vacante : ${listaV}">
+	  <tr th:each="vacantes : ${listaV}">
 	  	<td> 
-	  		<img th:src="@{/images/{img}  (img=${vacante.imagen}) }" width="135" height="135">
+	  		<img th:src="@{/images/{img}  (img=${vacantes.imagen}) }" width="135" height="135">
 	  	 </td>
-	    <td th:text= "${vacante.id}"></td>
-	    <td th:text= "${vacante.nombre}"></td>
-	    <td th:text= "${vacante.salario}"></td>
-	    <td th:text= "${vacante.fecha}"></td>
-	    <td th:text= "${vacante.descripcion}"></td>
+	    <td th:text= "${vacantes.id}"></td>
+	    <td th:text= "${vacantes.nombre}"></td>
+	    <td th:text= "${vacantes.salario}"></td>
+	    <td th:text= "${vacantes.fecha}"></td>
+	    <td th:text= "${vacantes.descripcion}"></td>
 	    <!-- 
 	    <td th:text="${vacante.destacado == 1} ? 'SI':'NO'"> </td>
 	     -->
 	     <td>
-	     	<span th:if= "${vacante.destacado == 1}" class="badge badge-success">SI</span>
-	     	<span th:unless= "${vacante.destacado == 1}" class="badge badge-danger">NO</span>
+	     	<span th:if= "${vacantes.destacado == 1}" class="badge badge-success">SI</span>
+	     	<span th:unless= "${vacantes.destacado == 1}" class="badge badge-danger">NO</span>
 	     	
 	     </td>
 	     <td>
-	     	<a th:href="@{/vacantes/view/{id} (id=${vacante.id})}" class="Btn btn-success">Detalle</a>
+	     	<a th:href="@{/vacantes/view/{id} (id=${vacantes.id})}" class="Btn btn-success">Detalle</a>
 	      </td>
 	       <td>
-	     	<a th:href="@{/vacantes/delete(id=${vacante.id})}" class="Btn btn-danger">Borrar</a>
+	     	<a th:href="@{/vacantes/delete(id=${vacantes.id})}" class="Btn btn-danger">Borrar</a>
 	      </td>
 	     
 	  </tr>
