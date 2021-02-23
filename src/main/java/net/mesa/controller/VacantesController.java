@@ -53,6 +53,7 @@ public class VacantesController {
 	public String mostrarIndexPaginado(Model model, Pageable page) {
 	Page<Vacante> lista = servicioVacante.buscarTodas(page);
 	model.addAttribute("vacantes", lista);
+	System.out.println("ocurrio un error rn" + lista.getSize());
 	return "vacantes/listVacantes";
 	}
 
